@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.qf.administrator.yoursister.MainActivity">
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/RedColor" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tabLayout" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:background="@mipmap/zhuyen"
+            android:layout_weight="1"
+            android:id="@+id/essence"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="true" />
+
+        <RadioButton
+            android:background="@mipmap/xintien"
+            android:layout_weight="1"
+            android:id="@+id/newPost"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:button="@null" />
+
+        <RadioButton
+            android:background="@mipmap/center"
+            android:layout_weight="1"
+            android:id="@+id/jiahao"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:button="@null" />
+
+        <RadioButton
+            android:background="@mipmap/guanzhun"
+            android:layout_weight="1"
+            android:id="@+id/attention"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:button="@null" />
+
+        <RadioButton
+            android:background="@mipmap/woden"
+            android:layout_weight="1"
+            android:id="@+id/own"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:button="@null" />
+    </RadioGroup>
+</RelativeLayout>
