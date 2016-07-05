@@ -27,44 +27,44 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:background="@mipmap/zhuyen"
-            android:layout_weight="1"
+            android:drawableTop="@drawable/select_zhuye"
             android:id="@+id/essence"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:button="@null"
             android:checked="true" />
 
         <RadioButton
-            android:background="@mipmap/xintien"
-            android:layout_weight="1"
+            android:drawableTop="@drawable/select_xintie"
             android:id="@+id/newPost"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:button="@null" />
 
         <RadioButton
-            android:background="@mipmap/center"
-            android:layout_weight="1"
+            android:drawableTop="@mipmap/center"
             android:id="@+id/jiahao"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:button="@null" />
 
         <RadioButton
-            android:background="@mipmap/guanzhun"
-            android:layout_weight="1"
+            android:drawableTop="@drawable/select_guanzhu"
             android:id="@+id/attention"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:button="@null" />
 
         <RadioButton
-            android:background="@mipmap/woden"
-            android:layout_weight="1"
+            android:drawableTop="@drawable/select_wode"
             android:id="@+id/own"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:button="@null" />
     </RadioGroup>
 </RelativeLayout>
