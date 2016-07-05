@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/popwindow"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:onClick="clickPop"
+        android:id="@+id/postmsg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@mipmap/fatie" />
+
+    <ImageView
+        android:id="@+id/shaiimage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@mipmap/shaitutu" />
+
+    <ImageView
+        android:id="@+id/askques"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@mipmap/tiwenen" />
+
+    <ImageView
+        android:id="@+id/findcar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@mipmap/zhaoche" />
+</LinearLayout>

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/mainRelative"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.qf.administrator.yoursister.MainActivity">
 
@@ -37,6 +38,7 @@
         android:layout_below="@id/linearLayout" />
     
     <RadioGroup
+        android:background="@color/popwindow"
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="36dp"
