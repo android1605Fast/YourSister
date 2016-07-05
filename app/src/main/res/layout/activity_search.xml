@@ -1,12 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.qf.administrator.yoursister.SearchActivity">
 
-    <TextView
-        android:text="这里是搜索Activity，请写代码"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</RelativeLayout>
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:weightSum="1">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/back"/>
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="综合"
+            android:background="@null"
+            android:drawableRight="@mipmap/dowm"/>
+        <SearchView
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_weight="1"
+            android:queryHint="搜索..."
+            android:saveEnabled="true" />
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:background="#f00"
+            android:text="搜索"
+            android:textColor="#fff"
+            android:layout_marginRight="5dp"/>
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/search_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/huise"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="搜索历史"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:src="@mipmap/dowm"/>
+    </LinearLayout>
+    <ListView
+        android:id="@+id/search_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
