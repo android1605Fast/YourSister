@@ -19,6 +19,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
     public ViewPagerAdapter(FragmentManager fm,List<PagerFragment> fragments){
         super(fm);
         this.fragments = fragments;
+        //因为标题栏是固定的，所以直接在这里设置,不用从网上获取
         titleList = new ArrayList<>();
         titleList.add("首页");
         titleList.add("车评");

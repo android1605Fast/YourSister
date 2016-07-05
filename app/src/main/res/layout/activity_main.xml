@@ -45,30 +45,41 @@
         android:orientation="horizontal">
 
         <RadioButton
+            android:drawableTop="@drawable/select_daogou"
+            android:button="@null"
             android:id="@+id/daogou"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <RadioButton
+            android:drawableTop="@drawable/select_hudong"
+            android:button="@null"
             android:id="@+id/hudong"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <RadioButton
+            android:drawableTop="@mipmap/addbig"
+            android:button="@null"
             android:id="@+id/center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <RadioButton
+
+            android:drawableTop="@drawable/select_cheku"
+            android:button="@null"
             android:id="@+id/garage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <RadioButton
+            android:drawableTop="@drawable/select_wode"
+            android:button="@null"
             android:id="@+id/own"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
