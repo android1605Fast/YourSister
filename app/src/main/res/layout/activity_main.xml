@@ -1,70 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.qf.administrator.yoursister.MainActivity">
-
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="36dp">
     <android.support.design.widget.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="42dp"
-        app:tabMode="scrollable"
-        app:tabSelectedTextColor="@color/RedColor" />
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/tabLayout" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:drawableTop="@drawable/select_zhuye"
-            android:id="@+id/essence"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+        android:id="@+id/tablayout"
+        android:layout_width="0dp"
+        android:layout_weight="8"
+        android:layout_height="match_parent"/>
+        <ImageView
             android:layout_weight="1"
-            android:button="@null"
-            android:checked="true" />
-
-        <RadioButton
-            android:drawableTop="@drawable/select_xintie"
-            android:id="@+id/newPost"
+            android:src="@mipmap/search"
+            android:id="@+id/searchImage"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null" />
-
-        <RadioButton
-            android:drawableTop="@mipmap/center"
-            android:id="@+id/jiahao"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null" />
-
-        <RadioButton
-            android:drawableTop="@drawable/select_guanzhu"
-            android:id="@+id/attention"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null" />
-
-        <RadioButton
-            android:drawableTop="@drawable/select_wode"
-            android:id="@+id/own"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null" />
-    </RadioGroup>
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </RelativeLayout>
