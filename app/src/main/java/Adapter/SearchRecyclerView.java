@@ -66,7 +66,6 @@ public class SearchRecyclerView extends RecyclerView.Adapter {
                     holder.btn.setTextColor(Color.WHITE);
                     holder.btn.setBackgroundColor(Color.RED);
                     pos=getLayoutPosition();*/
-                    notifyItemRemoved(getLayoutPosition());
                     Toast.makeText(context, "position:" + getLayoutPosition(), Toast.LENGTH_SHORT).show();
                 }
             });
