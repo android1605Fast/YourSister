@@ -77,7 +77,6 @@ public class SearchActivity extends AppCompatActivity{
             @Override
             public void onClick(String text) {
                 search_recyclerview_button.setText(text);
-                adapter.notifyDataSetChanged();
                 if(flag){
                     search_recyclerView.setVisibility(View.GONE);
                     flag=false;
