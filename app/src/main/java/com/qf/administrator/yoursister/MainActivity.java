@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onCheckedChanged(RadioGroup group, int checkedId){
                 switch(checkedId){
                     case R.id.center:
+
                         popupWindow.showAtLocation(relativelayout, Gravity.BOTTOM, 200, 160);
                         break;
                 }
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         popupWindow = new PopupWindow(layout, LinearLayout.LayoutParams.MATCH_PARENT, ViewPager.LayoutParams.WRAP_CONTENT);
         //要想在点击popwindow之外的时候能关闭pop,必须设置下面三个参数
         popupWindow.setOutsideTouchable(true);
-        popupWindow.setBackgroundDrawable(new ColorDrawable(0x000000));
+//        popupWindow.setBackgroundDrawable(new ColorDrawable(0x000000));
         popupWindow.setFocusable(true);
     }
 

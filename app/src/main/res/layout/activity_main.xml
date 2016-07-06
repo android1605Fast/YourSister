@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout android:id="@+id/mainRelative"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/mainRelative"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.qf.administrator.yoursister.MainActivity">
 
     <LinearLayout
@@ -14,77 +14,89 @@
         android:orientation="horizontal">
 
         <android.support.design.widget.TabLayout
-            app:tabSelectedTextColor="@color/RedColor"
-            app:tabMode="scrollable"
             android:id="@+id/tablayout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="8" />
+            android:layout_weight="8"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/RedColor" />
 
         <ImageButton
-            android:onClick="searchButton"
-            android:background="@null"
             android:id="@+id/searchImage"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@null"
+            android:onClick="searchButton"
             android:src="@mipmap/search" />
     </LinearLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/linearLayout" />
+        android:layout_below="@id/linearLayout">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3" />
+    </android.support.v4.widget.SwipeRefreshLayout>
     
     <RadioGroup
-        android:background="@color/popwindow"
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="36dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:background="@color/popwindow"
         android:orientation="horizontal">
 
         <RadioButton
-            android:drawableTop="@drawable/select_daogou"
-            android:button="@null"
             android:id="@+id/daogou"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/select_daogou" />
 
         <RadioButton
-            android:drawableTop="@drawable/select_hudong"
-            android:button="@null"
             android:id="@+id/hudong"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/select_hudong" />
 
         <RadioButton
-            android:drawableTop="@mipmap/addbig"
-            android:button="@null"
             android:id="@+id/center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@mipmap/addbig" />
 
         <RadioButton
-
-            android:drawableTop="@drawable/select_cheku"
-            android:button="@null"
             android:id="@+id/garage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/select_cheku" />
 
         <RadioButton
-            android:drawableTop="@drawable/select_wode"
-            android:button="@null"
             android:id="@+id/own"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/select_wode" />
     </RadioGroup>
 </RelativeLayout>
