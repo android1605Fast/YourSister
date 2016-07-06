@@ -49,7 +49,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * 点击RadioGroup里面内容的监听器
+     * 首页最下方四个radiobutton的监听事件
+     */
+    public void radioButton(View view){
+        switch(view.getId()){
+            case R.id.daogou:
+                Toast.makeText(this, "daoggou", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.hudong:
+                Toast.makeText(this, "hudong", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.garage:
+                Toast.makeText(this, "garage", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.own:
+                startActivity(new Intent(this,OwnActivity.class));
+                break;
+        }
+    }
+
+    /**
+     * 首页最下方RadioButton中间的红十字的监听器
      */
     public void clickRadioGroup(){
         centerBTN.setOnClickListener(new View.OnClickListener(){
@@ -96,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * 这里写popwinow的相关控件设置方法
+     * 这里写popwinow控件的相关设置方法
      */
     private void initPopWindow(){
         View layout = getLayoutInflater().inflate(R.layout.popwindow_layout, null);

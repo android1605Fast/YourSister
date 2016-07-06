@@ -24,7 +24,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
         titleList.add("首页");
         titleList.add("车评");
         titleList.add("视频");
-        titleList.add("长策");
+        titleList.add("长测");
         titleList.add("策划");
         titleList.add("观点");
         titleList.add("图片");
