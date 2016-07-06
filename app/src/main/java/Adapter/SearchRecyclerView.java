@@ -41,11 +41,11 @@ public class SearchRecyclerView extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if(text.equals(title.get(position))){
+       /* if(text.equals(title.get(position))){
             ((ViewHolder)holder).btn.setTextColor(Color.WHITE);
             ((ViewHolder)holder).btn.setBackgroundColor(Color.RED);
             pos=position;
-        }
+        }*/
         ((ViewHolder)holder).btn.setText(title.get(position));
     }
 
@@ -66,7 +66,7 @@ public class SearchRecyclerView extends RecyclerView.Adapter {
                     holder.btn.setTextColor(Color.WHITE);
                     holder.btn.setBackgroundColor(Color.RED);
                     pos=getLayoutPosition();*/
-                    Toast.makeText(context, "position:" + getLayoutPosition(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, "position:" + getLayoutPosition(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
