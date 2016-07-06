@@ -3,34 +3,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/popwindow"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <ImageView
-        android:onClick="clickPop"
-        android:id="@+id/postmsg"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:src="@mipmap/fatie" />
+        android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/shaiimage"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:src="@mipmap/shaitutu" />
+        <ImageView
+            android:id="@+id/postmsg"
+            style="@style/popwindowImage"
+            android:src="@mipmap/fatie" />
 
-    <ImageView
-        android:id="@+id/askques"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:src="@mipmap/tiwenen" />
+        <ImageView
+            android:id="@+id/shaiimage"
+            style="@style/popwindowImage"
+            android:src="@mipmap/shaitutu" />
 
-    <ImageView
-        android:id="@+id/findcar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/askques"
+            style="@style/popwindowImage"
+            android:src="@mipmap/tiwenen" />
+
+        <ImageView
+            android:id="@+id/findcar"
+            style="@style/popwindowImage"
+            android:src="@mipmap/zhaoche" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:src="@mipmap/zhaoche" />
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/popwindowTextView"
+            android:text="发帖" />
+
+        <TextView
+            style="@style/popwindowTextView"
+            android:text="晒图" />
+
+        <TextView
+            style="@style/popwindowTextView"
+            android:text="提问" />
+
+        <TextView
+            style="@style/popwindowTextView"
+            android:text="找车" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+       <ImageView
+           android:onClick="popwindowLastIamge"
+           android:layout_gravity="center"
+           android:src="@mipmap/popwindowimagebtn"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

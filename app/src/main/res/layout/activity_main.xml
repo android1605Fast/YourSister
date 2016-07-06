@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/mainRelative"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -61,42 +60,27 @@
 
         <RadioButton
             android:id="@+id/daogou"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
+            style="@style/MainRadioButton"
             android:drawableTop="@drawable/select_daogou" />
 
         <RadioButton
             android:id="@+id/hudong"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
+            style="@style/MainRadioButton"
             android:drawableTop="@drawable/select_hudong" />
 
         <RadioButton
             android:id="@+id/center"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
+            style="@style/MainRadioButton"
             android:drawableTop="@mipmap/addbig" />
 
         <RadioButton
             android:id="@+id/garage"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
+            style="@style/MainRadioButton"
             android:drawableTop="@drawable/select_cheku" />
 
         <RadioButton
             android:id="@+id/own"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
+            style="@style/MainRadioButton"
             android:drawableTop="@drawable/select_wode" />
     </RadioGroup>
 </RelativeLayout>

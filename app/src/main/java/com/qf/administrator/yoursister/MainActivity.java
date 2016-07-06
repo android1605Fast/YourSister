@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.qf.administrator.yoursister.fragment.PagerFragment;
@@ -35,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RadioButton centerBTN;
     private RadioGroup radioGroup;
     private PopupWindow popupWindow;
-    private RelativeLayout relativelayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -54,21 +52,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 点击RadioGroup里面内容的监听器
      */
     public void clickRadioGroup(){
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+        centerBTN.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId){
-                switch(checkedId){
-                    case R.id.center:
-
-                        popupWindow.showAtLocation(relativelayout, Gravity.BOTTOM, 200, 160);
-                        break;
-                }
+            public void onClick(View v){
+                popupWindow.setAnimationStyle(R.style.anim_popup_dir);
+                //                popupWindow.showAsDropDown(radioGroup,0,-radioGroup.getLayoutParams().height);
+                popupWindow.showAtLocation(radioGroup, Gravity.BOTTOM, 0, radioGroup.getLayoutParams().height);
             }
         });
     }
 
     private void initView(){
-        relativelayout = (RelativeLayout) findViewById(R.id.mainRelative);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
@@ -117,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         popupWindow = new PopupWindow(layout, LinearLayout.LayoutParams.MATCH_PARENT, ViewPager.LayoutParams.WRAP_CONTENT);
         //要想在点击popwindow之外的时候能关闭pop,必须设置下面三个参数
         popupWindow.setOutsideTouchable(true);
-//        popupWindow.setBackgroundDrawable(new ColorDrawable(0x000000));
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0));
         popupWindow.setFocusable(true);
     }
 
@@ -142,5 +136,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(this, "找车", Toast.LENGTH_SHORT).show();
                 break;
         }
+    }
+
+    /**
+     * popwindow里面最下面那个箭头的点击事件
+     * 点击了就关掉popwindow
+     *
+     * @param view
+     */
+    public void popwindowLastIamge(View view){
+        popupWindow.dismiss();
     }
 }
