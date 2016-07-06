@@ -1,0 +1,84 @@
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision 024c8dc941cc63274bce4e5eb1146ada18b7eea1)
++++ app/build.gradle	(revision )
+@@ -2,11 +2,11 @@
+ 
+ android {
+     compileSdkVersion 23
+-    buildToolsVersion "23.0.2"
++    buildToolsVersion "23.0.3"
+ 
+     defaultConfig {
+         applicationId "com.qf.administrator.yoursister"
+-        minSdkVersion 19
++        minSdkVersion  15
+         targetSdkVersion 23
+         versionCode 1
+         versionName "1.0"
+@@ -23,7 +23,7 @@
+     compile fileTree(dir: 'libs', include: ['*.jar'])
+     testCompile 'junit:junit:4.12'
+     compile 'com.android.support:appcompat-v7:23.4.0'
+-    compile 'com.android.support:design:24.0.0'
+     compile 'com.github.xiangtailiang:tablayout:1.0.0'
+     compile 'com.android.support:support-v4:23.4.0'
++    compile 'com.android.support:design:24.0.0'
+ }
+Index: app/src/main/java/com/example/shinelon/yoursister/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/shinelon/yoursister/MainActivity.java	(revision )
++++ app/src/main/java/com/example/shinelon/yoursister/MainActivity.java	(revision )
+@@ -0,0 +1,15 @@
++package com.example.shinelon.yoursister;
++
++import android.support.v7.app.AppCompatActivity;
++import android.os.Bundle;
++
++import com.qf.administrator.yoursister.R;
++
++public class MainActivity extends AppCompatActivity {
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_main);
++    }
++}
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(revision )
++++ .idea/vcs.xml	(revision )
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build.gradle	(revision 024c8dc941cc63274bce4e5eb1146ada18b7eea1)
++++ build.gradle	(revision )
+@@ -5,7 +5,7 @@
+         jcenter()
+     }
+     dependencies {
+-        classpath 'com.android.tools.build:gradle:2.1.2'
++        classpath 'com.android.tools.build:gradle:2.0.0'
+ 
+         // NOTE: Do not place your application dependencies here; they belong
+         // in the individual module build.gradle files

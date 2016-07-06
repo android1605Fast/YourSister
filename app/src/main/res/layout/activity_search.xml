@@ -1,12 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.qf.administrator.yoursister.SearchActivity">
 
-    <TextView
-        android:text="这里是搜索Activity，请写代码"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</RelativeLayout>
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:weightSum="1">
+        <ImageView
+            android:id="@+id/search_back_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/back"/>
+        <Button
+            android:id="@+id/search_recyclerview_button"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="综合"
+            android:background="@null"
+            android:drawableRight="@mipmap/dowm"/>
+        <EditText
+            android:id="@+id/search_edittext"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:hint="搜索..."/>
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:background="#f00"
+            android:text="搜索"
+            android:textColor="#fff"
+            android:layout_marginRight="5dp"/>
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/search_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/huise"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="搜索历史"/>
+        <ImageView
+            android:id="@+id/search_history_clean_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:src="@mipmap/dowm"/>
+    </LinearLayout>
+    <ListView
+        android:id="@+id/search_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
