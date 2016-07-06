@@ -28,7 +28,6 @@ public class OwnListViewAdapter extends BaseAdapter{
     public OwnListViewAdapter(Context context){
         this.context = context;
         inflater = LayoutInflater.from(context);
-
         itemlist = new ArrayList<>();
         itemlist.add("我的车库");
         itemlist.add("我的导购");
@@ -36,16 +35,21 @@ public class OwnListViewAdapter extends BaseAdapter{
         itemlist.add("我的收藏");
         itemlist.add("我的好友");
         itemlist.add("系统");
-
         Resources resources = context.getResources();
-        Bitmap bitmap = BitmapFactory.decodeResource(resources,R.mipmap.ic_launcher);
+        //通过bitmapfactiory解析resource资源为bitmap
+        Bitmap carbitmap = BitmapFactory.decodeResource(resources, R.mipmap.carcar);
+        Bitmap daogoubitmap = BitmapFactory.decodeResource(resources, R.mipmap.shoppingcar);
+        Bitmap commentbitmap = BitmapFactory.decodeResource(resources, R.mipmap.comment);
+        Bitmap collectionbitmap = BitmapFactory.decodeResource(resources, R.mipmap.collection);
+        Bitmap friendbitmap = BitmapFactory.decodeResource(resources, R.mipmap.friend);
+        Bitmap setbitmap = BitmapFactory.decodeResource(resources, R.mipmap.setting);
         bitmapList = new ArrayList<>();
-        bitmapList.add(bitmap);
-        bitmapList.add(bitmap);
-        bitmapList.add(bitmap);
-        bitmapList.add(bitmap);
-        bitmapList.add(bitmap);
-        bitmapList.add(bitmap);
+        bitmapList.add(carbitmap);
+        bitmapList.add(daogoubitmap);
+        bitmapList.add(commentbitmap);
+        bitmapList.add(collectionbitmap);
+        bitmapList.add(friendbitmap);
+        bitmapList.add(setbitmap);
     }
 
     @Override
