@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/popwindow"
+
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/registName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/username"
+        android:drawablePadding="5dp"
+        android:hint="用户名：4~20个字符"
+        android:paddingTop="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/regiterhint" />
+
+    <EditText
+        android:inputType="textEmailAddress"
+        android:id="@+id/registerEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/msg"
+        android:drawablePadding="5dp"
+        android:hint="邮箱：用于激活、登陆、找回密码"
+        android:paddingTop="20dp" />
+
+    <EditText
+        android:inputType="textPassword"
+        android:id="@+id/registerPwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/pwd"
+        android:drawablePadding="5dp"
+        android:hint="密码"
+        android:paddingTop="20dp" />
+
+    <EditText
+        android:inputType="textPassword"
+        android:id="@+id/registerConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/pwd"
+        android:drawablePadding="5dp"
+        android:hint="再次输入密码"
+        android:paddingTop="20dp" />
+
+    <Button
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btnshape"
+        android:onClick="confirmRegister"
+        android:text="立即注册" />
+</LinearLayout>

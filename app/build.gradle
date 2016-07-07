@@ -4,9 +4,14 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
 
+    android {
+        sourceSets {
+            main.jniLibs.srcDirs = ['libs']
+        }
+    }
     defaultConfig {
         applicationId "com.qf.administrator.yoursister"
-        minSdkVersion  15
+        minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -22,6 +27,12 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
+    compile files('libs/BmobSDK_3.5.0_20160627.jar')
+    compile files('libs/gson-2.6.2.jar')
+    compile files('libs/okhttp-3.3.1.jar')
+    compile files('libs/okio-1.7.0.jar')
+    compile files('libs/rxandroid-1.2.0.jar')
+    compile files('libs/rxjava-1.1.6.jar')
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.github.xiangtailiang:tablayout:1.0.0'
     compile 'com.android.support:support-v4:23.4.0'

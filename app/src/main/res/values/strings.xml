@@ -2,4 +2,11 @@
     <string name="app_name">YourSister</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_text">成为新车评网会员，您将可享受以下服务和权力:"\n"
+    1.在专家导购栏目提问"\n"
+    2.发表留言互动"\n"
+    3.积累积分换礼品"\n"
+    4.长文章一页阅读功能"\n"
+    5.开通车库写文章</string>
+    <string name="regiterhint">4-20个字符，只能填汉子，数字或字母，用于登陆.(账号注册后不能修改)</string>
 </resources>

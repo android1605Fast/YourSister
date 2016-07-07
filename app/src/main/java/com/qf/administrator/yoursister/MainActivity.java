@@ -5,7 +5,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,8 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Adapter.ViewPagerAdapter;
+import cn.bmob.v3.Bmob;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tabLayout.setupWithViewPager(viewPager);
         initPopWindow();
         clickRadioGroup();
+        //初始化Bmob
+        Bmob.initialize(this, "8023c69a2752f39ecdf1a21c73bc4087");
     }
 
     /**

@@ -7,6 +7,8 @@
     tools:context="com.qf.administrator.yoursister.OwnActivity">
 
     <RelativeLayout
+        android:id="@+id/cancelClick"
+        android:onClick="loginlistener"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -29,6 +31,7 @@
             android:text="欢迎来到新车评" />
 
         <TextView
+            android:id="@+id/regist_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/welcomecheping"
