@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="com.qf.administrator.yoursister"
     xmlns:android="http://schemas.android.com/apk/res/android">
+<<<<<<< HEAD
     <!-- 允许联网 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 获取GSM（2g）、WCDMA（联通3g）等网络状态的信息 -->
@@ -13,7 +14,11 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 允许读取手机状态 用于创建BmobInstallation -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+=======
+    <uses-permission android:name="android.permission.INTERNET"/>
+>>>>>>> a54142caa6bddf14019cbee353d4aa020db3ce22
     <application
+        android:name=".MyApp.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
