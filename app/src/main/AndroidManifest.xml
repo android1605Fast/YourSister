@@ -32,6 +32,7 @@
         <activity android:name=".OwnActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".MyApp.SettingActivity"></activity>
+        <activity android:name=".MyApp.SettingActivity" />
+        <activity android:name=".PhotoActivity"></activity>
     </application>
 </manifest>

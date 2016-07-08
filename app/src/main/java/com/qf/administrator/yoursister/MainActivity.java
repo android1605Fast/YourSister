@@ -3,6 +3,7 @@ package com.qf.administrator.yoursister;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -40,6 +41,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private ViewPager viewpager2;
     private List<Fragment> fragments_down;
     private SwipeRefreshLayout refreshLayout;
+    private RadioButton daogouBTN;
+    private RadioButton hudongBTN;
+    private RadioButton garageBTN;
+    private RadioButton ownBTN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -50,9 +55,53 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         addAdapterForTab();
         initPopWindow();
         clickRadioGroup();
+        viewpager2ChangeListener();
         //初始化Bmob
         Bmob.initialize(this, "8023c69a2752f39ecdf1a21c73bc4087");
+    }
 
+    /**
+     * viewpager2的页面改变监听
+     *  //当页面被选择的时候，下方radiobutton图标改变
+     */
+    private void viewpager2ChangeListener(){
+        viewpager2.addOnPageChangeListener(new ViewPager.OnPageChangeListener(){
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels){
+            }
+            //改变radiobutton的checked属性
+            @Override
+            public void onPageSelected(int position){
+                if(position==0){
+                    daogouBTN.setChecked(true);
+                    hudongBTN.setChecked(false);
+                    garageBTN.setChecked(false);
+                    ownBTN.setChecked(false);
+                }
+                if(position==1){
+                    daogouBTN.setChecked(false);
+                    hudongBTN.setChecked(true);
+                    garageBTN.setChecked(false);
+                    ownBTN.setChecked(false);
+                }
+                if(position==2){
+                    daogouBTN.setChecked(false);
+                    hudongBTN.setChecked(false);
+                    garageBTN.setChecked(true);
+                    ownBTN.setChecked(false);
+                }
+                if(position==3){
+                    daogouBTN.setChecked(false);
+                    hudongBTN.setChecked(false);
+                    garageBTN.setChecked(false);
+                    ownBTN.setChecked(true);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state){
+            }
+        });
     }
 
     /**
@@ -63,8 +112,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), fragments_up);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-        viewpager2.setVisibility(View.GONE);
-        viewPager.setVisibility(View.VISIBLE);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
+            @Override
+            public void onTabSelected(TabLayout.Tab tab){
+                viewpager2.setVisibility(View.GONE);
+                viewPager.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab){
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab){
+                viewpager2.setVisibility(View.GONE);
+                viewPager.setVisibility(View.VISIBLE);
+            }
+        });
+
     }
 
     /**
@@ -89,7 +154,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 break;
             case R.id.own:
                 viewpager2.setCurrentItem(3);
-
                 break;
         }
     }
@@ -109,6 +173,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     }
 
     private void initView(){
+        daogouBTN = (RadioButton) findViewById(R.id.daogou);
+        hudongBTN = (RadioButton) findViewById(R.id.hudong);
+        garageBTN = (RadioButton) findViewById(R.id.garage);
+        ownBTN = (RadioButton) findViewById(R.id.own);
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefresh);
         viewpager2 = (ViewPager) findViewById(R.id.viewPager_down);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
@@ -178,7 +246,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 Toast.makeText(this, "发帖", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.shaiimage:
-                Toast.makeText(this, "晒图", Toast.LENGTH_SHORT).show();
+                //跳转到晒图Activity
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_PICK);
+                intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+                startActivity(intent);
                 break;
             case R.id.askques:
                 Toast.makeText(this, "求问", Toast.LENGTH_SHORT).show();
