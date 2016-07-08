@@ -6,4 +6,6 @@
     <color name="RedColor">#e6143e</color>
     <color name="huise">#b6b1cc</color>
     <color name="popwindow">#b2b0be</color>
+    <color name="white">#fff</color>
+    <color name="lowblack">#ed2f2f2c</color>
 </resources>

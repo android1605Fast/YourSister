@@ -101,14 +101,74 @@ public class MainContext {
         private GifBean gif;
         private String type;
         private String id;
-        private String image;
+        private ImagerBean imageBean;
 
-        public String getImage() {
-            return image;
+        public static class ImagerBean{
+            private String medium;
+            private String big;
+            private String download_url;
+            private int width;
+            private int height;
+            private String small;
+
+            public String getSmall() {
+                return small;
+            }
+
+            public void setSmall(String small) {
+                this.small = small;
+            }
+
+            public ImagerBean() {
+            }
+
+            public String getMedium() {
+                return medium;
+            }
+
+            public void setMedium(String medium) {
+                this.medium = medium;
+            }
+
+            public String getBig() {
+                return big;
+            }
+
+            public void setBig(String big) {
+                this.big = big;
+            }
+
+            public String getDownload_url() {
+                return download_url;
+            }
+
+            public void setDownload_url(String download_url) {
+                this.download_url = download_url;
+            }
+
+            public int getWidth() {
+                return width;
+            }
+
+            public void setWidth(int width) {
+                this.width = width;
+            }
+
+            public int getHeight() {
+                return height;
+            }
+
+            public void setHeight(int height) {
+                this.height = height;
+            }
         }
 
-        public void setImage(String image) {
-            this.image = image;
+        public ImagerBean getImage() {
+            return imageBean;
+        }
+
+        public void setImage(ImagerBean imageBean) {
+            this.imageBean = imageBean;
         }
 
         public GifBean getGif() {
