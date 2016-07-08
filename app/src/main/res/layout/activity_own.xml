@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.qf.administrator.yoursister.OwnActivity">
+    tools:context="com.qf.administrator.yoursister.fragment.OwnFragment">
 
     <RelativeLayout
         android:id="@+id/cancelClick"
-        android:onClick="loginlistener"
+
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">

@@ -36,23 +36,26 @@
         android:layout_height="match_parent"
         android:layout_below="@id/linearLayout">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewPager"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3" />
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager_up"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager_down"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+        </FrameLayout>
     </android.support.v4.widget.SwipeRefreshLayout>
     
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@color/popwindow"
@@ -61,26 +64,32 @@
         <RadioButton
             android:id="@+id/daogou"
             style="@style/MainRadioButton"
-            android:drawableTop="@drawable/select_daogou" />
+            android:drawableTop="@drawable/select_daogou"
+            android:text="导购" />
 
         <RadioButton
             android:id="@+id/hudong"
             style="@style/MainRadioButton"
-            android:drawableTop="@drawable/select_hudong" />
+            android:drawableTop="@drawable/select_hudong"
+            android:text="互动" />
 
         <RadioButton
+            android:text="更多"
             android:id="@+id/center"
             style="@style/MainRadioButton"
+            android:checked="false"
             android:drawableTop="@mipmap/addbig" />
 
         <RadioButton
             android:id="@+id/garage"
             style="@style/MainRadioButton"
-            android:drawableTop="@drawable/select_cheku" />
+            android:drawableTop="@drawable/select_cheku"
+            android:text="车库" />
 
         <RadioButton
             android:id="@+id/own"
             style="@style/MainRadioButton"
-            android:drawableTop="@drawable/select_wode" />
+            android:drawableTop="@drawable/select_wode"
+            android:text="我的" />
     </RadioGroup>
 </RelativeLayout>

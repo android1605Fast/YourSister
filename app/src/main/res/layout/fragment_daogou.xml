@@ -2,11 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.qf.administrator.yoursister.fragment.PagerFragment">
+    tools:context="com.qf.administrator.yoursister.fragment.DaogouFragment">
     <!-- TODO: Update blank fragment layout -->
-    <ListView
-        android:id="@+id/mian_fragment_listview"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="match_parent"
+        android:text="导购" />
 </FrameLayout>

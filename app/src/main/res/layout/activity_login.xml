@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/popwindow"
     android:orientation="vertical"
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
@@ -10,7 +11,7 @@
     tools:context="com.qf.administrator.yoursister.LoginActivity">
 
     <EditText
-        android:id="@+id/NameET"
+        android:id="@+id/nameET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@mipmap/username"
@@ -19,22 +20,22 @@
         android:paddingLeft="20dp" />
 
     <EditText
-        android:inputType="textPassword"
         android:id="@+id/pwdET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@mipmap/pwd"
         android:drawablePadding="20dp"
         android:hint="密码"
+        android:inputType="textPassword"
         android:paddingLeft="20dp"
         android:paddingTop="15dp" />
 
     <Button
-        android:onClick="login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="@drawable/btnshape"
+        android:onClick="login"
         android:text="登录" />
 
     <LinearLayout
@@ -50,19 +51,19 @@
             android:text="忘记密码" />
 
         <TextView
-            android:onClick="register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="right"
+            android:onClick="register"
             android:text="新用户注册"
             android:textColor="@color/RedColor" />
     </LinearLayout>
 
     <TextView
-        android:lineSpacingExtra="3dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
+        android:lineSpacingExtra="3dp"
         android:text="@string/login_text" />
 </LinearLayout>

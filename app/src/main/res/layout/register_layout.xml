@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/popwindow"
-
     android:orientation="vertical">
 
     <EditText
@@ -51,13 +50,9 @@
         android:paddingTop="20dp" />
 
     <Button
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/MatchButton"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/btnshape"
         android:onClick="confirmRegister"
         android:text="立即注册" />
 </LinearLayout>

@@ -16,7 +16,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
     private List<String> titleList;
     private List<PagerFragment> fragments;
 
-    public ViewPagerAdapter(FragmentManager fm,List<PagerFragment> fragments){
+    public ViewPagerAdapter(FragmentManager fm, List<PagerFragment> fragments){
         super(fm);
         this.fragments = fragments;
         //因为标题栏是固定的，所以直接在这里设置,不用从网上获取
@@ -30,7 +30,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
         titleList.add("图片");
         titleList.add("资讯");
         titleList.add("经典");
-
     }
 
     @Override

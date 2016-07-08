@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,11 +16,16 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.qf.administrator.yoursister.fragment.DaogouFragment;
+import com.qf.administrator.yoursister.fragment.GarageFragment;
+import com.qf.administrator.yoursister.fragment.HudongFragment;
+import com.qf.administrator.yoursister.fragment.OwnFragment;
 import com.qf.administrator.yoursister.fragment.PagerFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import Adapter.AdapterDown;
 import Adapter.ViewPagerAdapter;
 import cn.bmob.v3.Bmob;
 
@@ -26,14 +33,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private List<PagerFragment> fragments;
-    private RadioButton daogouBTN;
-    private RadioButton garageBTN;
-    private RadioButton hudongBTN;
-    private RadioButton ownBTN;
+    private List<PagerFragment> fragments_up;
     private RadioButton centerBTN;
     private RadioGroup radioGroup;
     private PopupWindow popupWindow;
+    private ViewPager viewpager2;
+    private List<Fragment> fragments_down;
+    private SwipeRefreshLayout refreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -41,31 +47,49 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         setContentView(R.layout.activity_main);
         initData();
         initView();
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), fragments);
-        viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
+        addAdapterForTab();
         initPopWindow();
         clickRadioGroup();
         //初始化Bmob
         Bmob.initialize(this, "8023c69a2752f39ecdf1a21c73bc4087");
+
+    }
+
+    /**
+     * tablayout的适配器设置
+     * 并且当tablayout的title被点击的时候设置两个viewpager的显示与隐藏
+     */
+    private void addAdapterForTab(){
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), fragments_up);
+        viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
+        viewpager2.setVisibility(View.GONE);
+        viewPager.setVisibility(View.VISIBLE);
     }
 
     /**
      * 首页最下方四个radiobutton的监听事件
      */
     public void radioButton(View view){
+        viewPager.setVisibility(View.GONE);
+        viewpager2.setVisibility(View.VISIBLE);
+        //当切换页面的时候不会出现刷新按钮
+        refreshLayout.setRefreshing(false);
+        AdapterDown adapter_down = new AdapterDown(getSupportFragmentManager(), fragments_down);
+        viewpager2.setAdapter(adapter_down);
         switch(view.getId()){
             case R.id.daogou:
-                Toast.makeText(this, "daoggou", Toast.LENGTH_SHORT).show();
+                viewpager2.setCurrentItem(0);
                 break;
             case R.id.hudong:
-                Toast.makeText(this, "hudong", Toast.LENGTH_SHORT).show();
+                viewpager2.setCurrentItem(1);
                 break;
             case R.id.garage:
-                Toast.makeText(this, "garage", Toast.LENGTH_SHORT).show();
+                viewpager2.setCurrentItem(2);
                 break;
             case R.id.own:
-                startActivity(new Intent(this,OwnActivity.class));
+                viewpager2.setCurrentItem(3);
+
                 break;
         }
     }
@@ -85,27 +109,32 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     }
 
     private void initView(){
+        refreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefresh);
+        viewpager2 = (ViewPager) findViewById(R.id.viewPager_down);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
-        daogouBTN = (RadioButton) findViewById(R.id.daogou);
-        garageBTN = (RadioButton) findViewById(R.id.garage);
-        hudongBTN = (RadioButton) findViewById(R.id.hudong);
-        ownBTN = (RadioButton) findViewById(R.id.own);
+        viewPager = (ViewPager) findViewById(R.id.viewPager_up);
         centerBTN = (RadioButton) findViewById(R.id.center);
     }
 
     private void initData(){
-        fragments = new ArrayList<>();
-        fragments.add(new PagerFragment());
-        fragments.add(new PagerFragment());
-        fragments.add(new PagerFragment());
-        fragments.add(new PagerFragment());
-        fragments.add(new PagerFragment());
-        fragments.add(new PagerFragment());
-        fragments.add(new PagerFragment());
-        fragments.add(new PagerFragment());
-        fragments.add(new PagerFragment());
+        //tablout子选项的viewpager
+        fragments_up = new ArrayList<>();
+        fragments_up.add(new PagerFragment());
+        fragments_up.add(new PagerFragment());
+        fragments_up.add(new PagerFragment());
+        fragments_up.add(new PagerFragment());
+        fragments_up.add(new PagerFragment());
+        fragments_up.add(new PagerFragment());
+        fragments_up.add(new PagerFragment());
+        fragments_up.add(new PagerFragment());
+        fragments_up.add(new PagerFragment());
+        //下方radiogroup的viewpager
+        fragments_down = new ArrayList<>();
+        fragments_down.add(new DaogouFragment());
+        fragments_down.add(new HudongFragment());
+        fragments_down.add(new GarageFragment());
+        fragments_down.add(new OwnFragment(this));
     }
 
     /**
