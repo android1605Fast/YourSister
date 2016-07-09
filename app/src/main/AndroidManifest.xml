@@ -31,8 +31,5 @@
         <activity android:name=".SearchActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".MyApp.SettingActivity" />
-        <activity android:name=".PhotoActivity"/>
-        <activity android:name=".PhotoActivity"/>
     </application>
 </manifest>

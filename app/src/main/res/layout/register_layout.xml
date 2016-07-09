@@ -55,4 +55,5 @@
         android:layout_marginTop="10dp"
         android:onClick="confirmRegister"
         android:text="立即注册" />
+
 </LinearLayout>

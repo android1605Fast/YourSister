@@ -8,6 +8,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,6 +23,7 @@ import com.qf.administrator.yoursister.fragment.GarageFragment;
 import com.qf.administrator.yoursister.fragment.HudongFragment;
 import com.qf.administrator.yoursister.fragment.OwnFragment;
 import com.qf.administrator.yoursister.fragment.PagerFragment;
+import com.qf.administrator.yoursister.utils.CommonUse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +35,12 @@ import cn.bmob.v3.Bmob;
 public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     private TabLayout tabLayout;
-    private ViewPager viewPager;
+    private ViewPager viewPagerUp;
     private List<PagerFragment> fragments_up;
     private RadioButton centerBTN;
     private RadioGroup radioGroup;
     private PopupWindow popupWindow;
-    private ViewPager viewpager2;
+    private ViewPager viewPagerDown;
     private List<Fragment> fragments_down;
     private SwipeRefreshLayout refreshLayout;
     private RadioButton daogouBTN;
@@ -62,44 +64,35 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     /**
      * viewpager2的页面改变监听
-     *  //当页面被选择的时候，下方radiobutton图标改变
+     * //当页面被选择的时候，下方radiobutton图标改变
      */
     private void viewpager2ChangeListener(){
-        viewpager2.addOnPageChangeListener(new ViewPager.OnPageChangeListener(){
+        viewPagerDown.addOnPageChangeListener(new ViewPager.OnPageChangeListener(){
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels){
             }
+
             //改变radiobutton的checked属性
             @Override
             public void onPageSelected(int position){
-                if(position==0){
-                    daogouBTN.setChecked(true);
-                    hudongBTN.setChecked(false);
-                    garageBTN.setChecked(false);
-                    ownBTN.setChecked(false);
+                if(position == 0){
+                    CommonUse.changeBtnLogo(daogouBTN, hudongBTN, garageBTN, ownBTN);
                 }
-                if(position==1){
-                    daogouBTN.setChecked(false);
-                    hudongBTN.setChecked(true);
-                    garageBTN.setChecked(false);
-                    ownBTN.setChecked(false);
+                if(position == 1){
+                    CommonUse.changeBtnLogo(hudongBTN, daogouBTN, garageBTN, ownBTN);
                 }
-                if(position==2){
-                    daogouBTN.setChecked(false);
-                    hudongBTN.setChecked(false);
-                    garageBTN.setChecked(true);
-                    ownBTN.setChecked(false);
+                if(position == 2){
+                    CommonUse.changeBtnLogo(garageBTN, daogouBTN, hudongBTN, ownBTN);
                 }
-                if(position==3){
-                    daogouBTN.setChecked(false);
-                    hudongBTN.setChecked(false);
-                    garageBTN.setChecked(false);
-                    ownBTN.setChecked(true);
+                if(position == 3){
+                    CommonUse.changeBtnLogo(ownBTN, daogouBTN, hudongBTN, garageBTN);
                 }
             }
 
+            //防止viewpager和refresh冲突
             @Override
             public void onPageScrollStateChanged(int state){
+                CommonUse.patchChongtu(viewPagerDown, refreshLayout);
             }
         });
     }
@@ -110,13 +103,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
      */
     private void addAdapterForTab(){
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), fragments_up);
-        viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
+        viewPagerUp.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPagerUp);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
             @Override
             public void onTabSelected(TabLayout.Tab tab){
-                viewpager2.setVisibility(View.GONE);
-                viewPager.setVisibility(View.VISIBLE);
+                CommonUse.hideViewpager(viewPagerUp, viewPagerDown, refreshLayout);
             }
 
             @Override
@@ -125,35 +117,31 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
             @Override
             public void onTabReselected(TabLayout.Tab tab){
-                viewpager2.setVisibility(View.GONE);
-                viewPager.setVisibility(View.VISIBLE);
+                CommonUse.hideViewpager(viewPagerUp, viewPagerDown);
+                CommonUse.patchChongtu(viewPagerUp, refreshLayout);
             }
         });
-
     }
 
     /**
      * 首页最下方四个radiobutton的监听事件
      */
     public void radioButton(View view){
-        viewPager.setVisibility(View.GONE);
-        viewpager2.setVisibility(View.VISIBLE);
-        //当切换页面的时候不会出现刷新按钮
-        refreshLayout.setRefreshing(false);
+        CommonUse.hideViewpager(viewPagerDown, viewPagerUp, refreshLayout);
         AdapterDown adapter_down = new AdapterDown(getSupportFragmentManager(), fragments_down);
-        viewpager2.setAdapter(adapter_down);
+        viewPagerDown.setAdapter(adapter_down);
         switch(view.getId()){
             case R.id.daogou:
-                viewpager2.setCurrentItem(0);
+                viewPagerDown.setCurrentItem(0);
                 break;
             case R.id.hudong:
-                viewpager2.setCurrentItem(1);
+                viewPagerDown.setCurrentItem(1);
                 break;
             case R.id.garage:
-                viewpager2.setCurrentItem(2);
+                viewPagerDown.setCurrentItem(2);
                 break;
             case R.id.own:
-                viewpager2.setCurrentItem(3);
+                viewPagerDown.setCurrentItem(3);
                 break;
         }
     }
@@ -171,32 +159,26 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             }
         });
     }
-
+    //初始化视图
     private void initView(){
         daogouBTN = (RadioButton) findViewById(R.id.daogou);
         hudongBTN = (RadioButton) findViewById(R.id.hudong);
         garageBTN = (RadioButton) findViewById(R.id.garage);
         ownBTN = (RadioButton) findViewById(R.id.own);
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefresh);
-        viewpager2 = (ViewPager) findViewById(R.id.viewPager_down);
+        viewPagerDown = (ViewPager) findViewById(R.id.viewPager_down);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
-        viewPager = (ViewPager) findViewById(R.id.viewPager_up);
+        viewPagerUp = (ViewPager) findViewById(R.id.viewPager_up);
         centerBTN = (RadioButton) findViewById(R.id.center);
     }
-
+    //初始化数据
     private void initData(){
         //tablout子选项的viewpager
         fragments_up = new ArrayList<>();
-        fragments_up.add(new PagerFragment());
-        fragments_up.add(new PagerFragment());
-        fragments_up.add(new PagerFragment());
-        fragments_up.add(new PagerFragment());
-        fragments_up.add(new PagerFragment());
-        fragments_up.add(new PagerFragment());
-        fragments_up.add(new PagerFragment());
-        fragments_up.add(new PagerFragment());
-        fragments_up.add(new PagerFragment());
+        for(int i = 0; i <8 ; i++){
+            fragments_up.add(new PagerFragment());
+        }
         //下方radiogroup的viewpager
         fragments_down = new ArrayList<>();
         fragments_down.add(new DaogouFragment());
@@ -223,10 +205,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         ImageView shaiImage = (ImageView) layout.findViewById(R.id.shaiimage);
         ImageView askImage = (ImageView) layout.findViewById(R.id.askques);
         ImageView findImage = (ImageView) layout.findViewById(R.id.findcar);
-        postImage.setOnClickListener(this);
-        shaiImage.setOnClickListener(this);
-        askImage.setOnClickListener(this);
-        findImage.setOnClickListener(this);
+        CommonUse.setOnclickListenerCustom(this,postImage,shaiImage,askImage,findImage);
         popupWindow = new PopupWindow(layout, LinearLayout.LayoutParams.MATCH_PARENT, ViewPager.LayoutParams.WRAP_CONTENT);
         //要想在点击popwindow之外的时候能关闭pop,必须设置下面三个参数
         popupWindow.setOutsideTouchable(true);
@@ -246,7 +225,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 Toast.makeText(this, "发帖", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.shaiimage:
-                //跳转到晒图Activity
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_PICK);
                 intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
@@ -262,8 +240,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     }
 
     /**
-     * popwindow里面最下面那个箭头的点击事件
-     * 点击了就关掉popwindow
+     * popwindow里面最下面那个箭头的点击事件点击了就关掉popwindow
      *
      * @param view
      */

@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.qf.administrator.yoursister.LoginActivity;
 import com.qf.administrator.yoursister.R;
+import com.qf.administrator.yoursister.javabean.MyApp;
 
 import Adapter.OwnListViewAdapter;
 
@@ -29,10 +30,12 @@ public class OwnFragment extends BaseFragment{
     private Context context;
     private RelativeLayout relativeLayout;
 
+    public OwnFragment(){
+    }
+
     public OwnFragment(Context context){
         this.context = context;
     }
-    //不要忘记给listView添加头布局
 
     @Nullable
     @Override
@@ -44,6 +47,7 @@ public class OwnFragment extends BaseFragment{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
         initView(view);
+        addHeadView();
         ownlistView.setAdapter(new OwnListViewAdapter(context));
         //点击跳转到登录界面,返回登录成功的数据
         relativeLayout.setOnClickListener(new View.OnClickListener(){
@@ -53,6 +57,13 @@ public class OwnFragment extends BaseFragment{
                 startActivityForResult(intent, STARTACTIVITYCODE);
             }
         });
+
+    }
+    //添加头布局
+    private void addHeadView(){
+        LayoutInflater layoutInflater = getLayoutInflater(null);
+        View view = layoutInflater.inflate(R.layout.head_layout, null);
+        ownlistView.addHeaderView(view);
     }
 
     private void initView(View view){
